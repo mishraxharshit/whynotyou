@@ -2,15 +2,27 @@
   "articles": [
     {
       "id": 1,
-      "title": "Building Your First Web App",
-      "category": "Web Development",
-      "date": "2025-01-15"
+      "title": "The Age of Quiet Technology",
+      "read_time": "5 min read",
+      "category": "Future Tech",
+      "excerpt": "We\u2019re entering an era where devices disappear into the background and intelligence becomes invisible.",
+      "content": "Technology used to shout.\nScreens glowed at maximum brightness. Devices demanded updates, notifications, and attention.\n\nBut the future is not loud.\nThe future is quiet.\n\nSome of the most transformative technologies now fade into the background until they feel like intuition.\n\n\u2014 Homes regulate air quality automatically.\n\u2014 Cars prevent collisions before your brain reacts.\n\u2014 Smartphones suggest actions before you open an app.\n\u2014 AI assists without needing to be commanded.\n\nQuiet technology respects your mental space.\n\nIt is powerful, but humble.\nIt works, but does not demand.\n\nThe next revolution is not louder intelligence \u2014 it is invisible intelligence.\nTechnology will disappear into the environment and become a natural extension of our thinking.\n\nThe loudest future\u2026 is the quiet one."
     },
     {
       "id": 2,
-      "title": "AI Fundamentals",
-      "category": "AI",
-      "date": "2025-01-14"
+      "title": "Why Curiosity Beats Talent",
+      "read_time": "4 min read",
+      "category": "Mind & Learning",
+      "excerpt": "Curiosity is the real engine of learning \u2014 here\u2019s why it outperforms talent in every field.",
+      "content": "Talent is overrated.\nCuriosity is unstoppable.\n\nTalent gives you a head start, but curiosity keeps you moving.\nCurious people:\n\n\u2014 Explore without fear\n\u2014 Learn without pressure\n\u2014 Improve without permission\n\u2014 Outgrow their limitations\n\nCuriosity is a mindset, not a skill.\nIt turns every mistake into a teacher.\nIt transforms every problem into a puzzle.\n\nPeople who stay curious break the rules of expectation.\nThey teach themselves.\nThey evolve.\nThey become the people everyone else calls 'naturally talented.'\n\nBut it was never talent.\nIt was curiosity.\n\nYour power is not what you know.\nYour power is wanting to know more."
+    },
+    {
+      "id": 3,
+      "title": "The Future of Work Is Self-Learning",
+      "read_time": "6 min read",
+      "category": "Career & Future",
+      "excerpt": "The future belongs to people who teach themselves. Adaptability outpaces credentials.",
+      "content": "The future belongs to people who teach themselves.\n\nDegrees matter less.\nAdaptability matters more.\n\nThe modern world changes too fast for static education.\nAI, automation, and global access have rewritten the rules.\n\nSelf-learners:\n\n\u2014 Move faster than institutions\n\u2014 Build skills on demand\n\u2014 Create opportunities instead of waiting\n\u2014 Stay relevant in every decade\n\nLearning is no longer a phase.\nIt is a lifestyle.\n\nThe winners of the next decade are not the ones with the best diplomas.\nThey are the ones with:\n\n1. A curious mind\n2. A fast-learning habit\n3. A fearless experimental spirit\n\nThe future of work is not employment.\nIt is evolution.\nThose who evolve\u2026 rise."
     }
   ]
 }

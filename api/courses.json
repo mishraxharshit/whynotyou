@@ -1,18 +1,122 @@
-{
-  "courses": [
-    {
-      "id": 1,
-      "title": "Web Development Basics",
-      "category": "Web Development",
-      "level": "Beginner",
-      "duration": "4 weeks"
-    },
-    {
-      "id": 2,
-      "title": "Python for Beginners",
-      "category": "Programming",
-      "level": "Beginner",
-      "duration": "5 weeks"
-    }
-  ]
-}
+[
+  {
+    "id": "data-science-foundations",
+    "title": "Introduction to Data Science",
+    "level": "Beginner",
+    "description": "Beginner-friendly path into the world of data, tools, and models.",
+    "weeks": 4,
+    "units": [
+      {
+        "title": "Foundations of Data",
+        "lessons": [
+          "What is data?",
+          "Collection methods",
+          "Lifecycle of data",
+          "Tools overview"
+        ]
+      },
+      {
+        "title": "Essential Python for Data Work",
+        "lessons": [
+          "Python basics",
+          "Jupyter notebooks",
+          "DataFrames with Pandas",
+          "Practical exercises"
+        ]
+      },
+      {
+        "title": "Visualization",
+        "lessons": [
+          "Chart types",
+          "Color theory",
+          "Matplotlib & Seaborn",
+          "Storytelling with data"
+        ]
+      },
+      {
+        "title": "Intro to Machine Learning",
+        "lessons": [
+          "Supervised vs unsupervised",
+          "Train/test split",
+          "Linear models",
+          "Final mini-project"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "full-stack-web-dev",
+    "title": "Full-Stack Web Development",
+    "level": "Beginner \u2192 Intermediate",
+    "description": "Modern front-end, solid back-end, real deployment.",
+    "weeks": 8,
+    "units": [
+      {
+        "title": "Web Foundations",
+        "lessons": [
+          "How the web works",
+          "HTTP & DNS",
+          "HTML5",
+          "CSS architecture"
+        ]
+      },
+      {
+        "title": "Responsive Design",
+        "lessons": [
+          "Flexbox & Grid",
+          "Mobile-first",
+          "Accessibility",
+          "Performance"
+        ]
+      },
+      {
+        "title": "JavaScript Essentials",
+        "lessons": [
+          "DOM & Events",
+          "Fetch API",
+          "Async patterns"
+        ]
+      },
+      {
+        "title": "Front-End Frameworks",
+        "lessons": [
+          "React basics",
+          "State & props",
+          "Building an SPA"
+        ]
+      },
+      {
+        "title": "Back-End Foundations",
+        "lessons": [
+          "Node & Express",
+          "CRUD",
+          "Authentication"
+        ]
+      },
+      {
+        "title": "Databases",
+        "lessons": [
+          "SQL vs NoSQL",
+          "Schema design",
+          "MongoDB intro"
+        ]
+      },
+      {
+        "title": "Deployment",
+        "lessons": [
+          "Git & GitHub",
+          "Hosting options",
+          "Environment variables"
+        ]
+      },
+      {
+        "title": "Final Project",
+        "lessons": [
+          "Design",
+          "Build",
+          "Deploy"
+        ]
+      }
+    ]
+  }
+]
