@@ -1,0 +1,5 @@
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+.hero-content { animation: fadeInUp 0.8s ease-out; }
+.article-card { transition: all 0.3s; }
+.article-card:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.1); }

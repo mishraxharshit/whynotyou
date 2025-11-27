@@ -1,0 +1,16 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Building Your First Web App",
+      "category": "Web Development",
+      "date": "2025-01-15"
+    },
+    {
+      "id": 2,
+      "title": "AI Fundamentals",
+      "category": "AI",
+      "date": "2025-01-14"
+    }
+  ]
+}

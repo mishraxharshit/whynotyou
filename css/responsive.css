@@ -1,0 +1,15 @@
+@media (max-width: 768px) {
+  nav { display: none; }
+  .hamburger { display: flex; cursor: pointer; gap: 5px; }
+  .hero h1 { font-size: 42px; }
+  .featured-grid { grid-template-columns: 1fr; }
+  .article-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-content { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .logo { font-size: 20px; }
+  .hero h1 { font-size: 28px; }
+  .section-title { font-size: 24px; }
+  .stats-grid { grid-template-columns: 1fr; }
+}

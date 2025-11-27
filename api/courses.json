@@ -1,0 +1,18 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Web Development Basics",
+      "category": "Web Development",
+      "level": "Beginner",
+      "duration": "4 weeks"
+    },
+    {
+      "id": 2,
+      "title": "Python for Beginners",
+      "category": "Programming",
+      "level": "Beginner",
+      "duration": "5 weeks"
+    }
+  ]
+}
