@@ -1,13 +1,8 @@
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('fade-in');
-    }
-  });
-}, { threshold: 0.1 });
-
+// animations.js - entrance and simple interactions
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.article-card, .stat-item').forEach(el => {
-    observer.observe(el);
-  });
+  const hero = document.querySelector('.hero-copy');
+  if (hero) {
+    hero.classList.add('fade-in');
+    requestAnimationFrame(()=> hero.classList.add('show'));
+  }
 });

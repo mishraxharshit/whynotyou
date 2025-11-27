@@ -1,52 +1,105 @@
-/* --- Hero styles --- */
+/* style.css - premium, magazine-style visuals */
 :root{
-  --bg: #F6F8FB;
-  --navy: #0F1724;
+  --bg: #0f0f10;
+  --navy: #e6eef3;
   --accent: #00D1FF;
   --accent2: #FF4EC4;
-  --muted: #6B7280;
+  --muted: #9aa0a6;
+  --card: #0f1112;
+}
+/* -------------------------
+   THEME SYSTEM
+--------------------------*/
+
+/* Light Theme (default) */
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --card-bg: #f7f7f7;
+    --border: #dddddd;
 }
 
-body{ font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); color:var(--navy); margin:0; }
-
-.hero{ padding:6rem 1.5rem; }
-.hero-inner{ max-width:1200px; margin:0 auto; display:flex; gap:2.5rem; align-items:center; justify-content:space-between; flex-wrap:wrap; }
-
-.hero-copy{ flex:1 1 460px; }
-.hero-copy h1{ font-size:clamp(2rem,4.5vw,3.6rem); margin:0 0 0.6rem; letter-spacing:-0.02em; line-height:1.02; display:flex; align-items:center; gap:.6rem; }
-.hero-copy .accent-dot{ color:var(--accent); font-weight:800; transform:translateY(-2px); }
-
-.lead{ color:var(--muted); font-size:1.05rem; margin:0 0 1.4rem; max-width:48ch; }
-
-.hero-ctas{ display:flex; gap:.8rem; align-items:center; flex-wrap:wrap; }
-.btn{ display:inline-block; padding:0.7rem 1.1rem; border-radius:12px; font-weight:600; text-decoration:none; }
-.btn.primary{ background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#052024; box-shadow:0 6px 20px rgba(3,16,28,0.12); transform:translateY(0); transition:transform .18s ease, box-shadow .18s ease; }
-.btn.primary:hover{ transform:translateY(-4px); box-shadow:0 12px 28px rgba(3,16,28,0.18); }
-.btn.ghost{ border:1px solid rgba(15,23,36,0.08); color:var(--navy); background:transparent; padding:0.6rem 1rem; }
-
-.hero-art{ flex:0 1 380px; position:relative; min-width:300px; display:flex; align-items:center; justify-content:center; }
-
-/* sample card */
-.card{ background:var(--card,#fff); border-radius:16px; box-shadow:0 12px 40px rgba(15,23,36,0.06); width:320px; overflow:hidden; transform:translateY(0); transition:transform .25s ease; }
-.card-header{ padding:.8rem 1rem; font-size:.85rem; color:var(--muted); background:linear-gradient(180deg,#ffffff, #fafafa); border-bottom:1px solid rgba(15,23,36,0.03); }
-.card-body{ padding:1.1rem; }
-.card-body h3{ margin:0 0 .5rem; font-size:1.05rem; }
-.progress{ height:8px; background:#eef6fb; border-radius:999px; margin:0.8rem 0; overflow:hidden; }
-.progress span{ display:block; height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:999px; transition:width .6s cubic-bezier(.2,.9,.3,1); }
-
-/* floating decorative shapes */
-.float{ position:absolute; border-radius:14px; filter:blur(18px); opacity:.9; transform:translateZ(0); }
-.float-1{ width:140px; height:140px; right:-20px; top:-40px; background:linear-gradient(135deg,var(--accent),var(--accent2)); animation:floaty 6s ease-in-out infinite; }
-.float-2{ width:80px; height:80px; right:40px; bottom:-20px; background:linear-gradient(135deg,var(--accent2),var(--accent)); animation:floaty 8s ease-in-out infinite; opacity:.7; }
-
-@keyframes floaty{
-  0%{ transform: translateY(0) rotate(0deg); }
-  50%{ transform: translateY(-14px) rotate(6deg); }
-  100%{ transform: translateY(0) rotate(0deg); }
+/* Dark Theme */
+body.dark {
+    --bg: #0d0d0d;
+    --text: #f1f1f1;
+    --card-bg: #111;
+    --border: #333;
 }
 
-/* responsive */
-@media (max-width:880px){
-  .hero-inner{ flex-direction:column-reverse; align-items:flex-start; gap:2rem; }
-  .hero-art{ width:100%; display:flex; justify-content:flex-start; }
+/* Apply Colors */
+body {
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
 }
+
+/* Card styles automatically theme */
+.article-card,
+.course-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+}
+
+/* Toggle Button */
+.theme-toggle {
+    position: fixed;
+    right: 25px;
+    top: 25px;
+    padding: 10px 14px;
+    font-size: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:var(--navy);background:var(--bg);-webkit-font-smoothing:antialiased}
+.container{max-width:1100px;margin:0 auto;padding:0 1rem}
+.header{backdrop-filter:saturate(120%) blur(6px);position:sticky;top:0;z-index:40;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-bottom:1px solid rgba(255,255,255,0.02)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+.logo{font-weight:700;letter-spacing:-0.02em;font-size:1.1rem}
+nav ul{list-style:none;display:flex;gap:1rem;padding:0;margin:0}
+nav a{color:var(--navy);text-decoration:none;font-weight:600;opacity:.95}
+.hero{padding:6rem 0}
+hero-inner{display:flex;gap:2.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.hero-copy{flex:1 1 460px}
+.hero-copy h1{font-size:clamp(2rem,4.5vw,3.6rem);margin:0 0 .6rem;letter-spacing:-0.02em;line-height:1.02;display:flex;align-items:center;gap:.6rem}
+.accent{color:var(--accent);font-weight:800;transform:translateY(-2px)}
+.lead{color:var(--muted);font-size:1.05rem;margin:0 0 1.4rem;max-width:48ch}
+.hero-ctas{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:.7rem 1.1rem;border-radius:12px;font-weight:600;text-decoration:none}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#052024;box-shadow:0 6px 20px rgba(3,16,28,0.12);transition:transform .18s ease,box-shadow .18s ease}
+.btn.primary:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(3,16,28,0.18)}
+.btn.ghost{border:1px solid rgba(255,255,255,0.04);color:var(--navy);background:transparent;padding:.6rem 1rem}
+.card{background:var(--card);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.6);width:320px;overflow:hidden;transform:translateY(0);transition:transform .25s ease}
+.card-header{padding:.8rem 1rem;font-size:.85rem;color:var(--muted);background:linear-gradient(180deg,#0f0f10,#0b0b0c);border-bottom:1px solid rgba(255,255,255,0.02)}
+.card-body{padding:1.1rem}
+.card-body h3{margin:0 0 .5rem;font-size:1.05rem}
+.progress{height:8px;background:#0b1316;border-radius:999px;margin:.8rem 0;overflow:hidden}
+progress span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px;transition:width .6s cubic-bezier(.2,.9,.3,1)}
+.section-title{font-size:1.25rem;margin:0 0 1rem;font-weight:700}
+.blogs-grid,.courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
+.blog-card,.course-card{background:var(--card);padding:1.2rem;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.6)}
+.blog-card h3{margin:0 0 .6rem}
+.read-more{display:inline-block;margin-top:.6rem;text-decoration:none;color:var(--accent);font-weight:600}
+.footer{padding:2.2rem 0;border-top:1px solid rgba(255,255,255,0.02);margin-top:3rem}
+.footer-inner{display:flex;flex-direction:column;gap:.5rem;align-items:flex-start}
+.muted{color:var(--muted)}
+.float{position:absolute;border-radius:14px;filter:blur(18px);opacity:.9;transform:translateZ(0)}
+.float-1{width:140px;height:140px;right:-20px;top:-40px;background:linear-gradient(135deg,var(--accent),var(--accent2));animation:floaty 6s ease-in-out infinite}
+.float-2{width:80px;height:80px;right:40px;bottom:-20px;background:linear-gradient(135deg,var(--accent2),var(--accent));animation:floaty 8s ease-in-out infinite;opacity:.8}
+@keyframes floaty{0%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(6deg)}100%{transform:translateY(0) rotate(0deg)}}
+
+/* Article styles added later */
+.article-wrapper { max-width: 850px; margin: 80px auto; padding: 20px; }
+.article-meta { color: #888; font-size: 15px; margin-bottom: 20px; }
+.article-content p { line-height: 1.8; margin: 20px 0; font-size: 18px; }
+.article-card { padding: 25px; border: 1px solid #222; border-radius: 14px; margin-bottom: 20px; background: #111; transition: 0.3s; }
+.article-card:hover { transform: translateY(-5px); border-color: #fff; }
