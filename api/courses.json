@@ -1,119 +1,64 @@
 {
   "courses": [
     {
-      "id": "html-master",
-      "title": "HTML Mastery",
-      "description": "Learn HTML from beginner to expert with a clean Wikipedia-style course format.",
+      "id": "fullstack",
+      "title": "Full-Stack Web Development",
+      "description": "Modern front-end and back-end development, projects and deployment.",
       "lessons": [
         {
-          "title": "Introduction to HTML",
+          "id": "intro",
+          "title": "Introduction to the Course",
           "content": [
-            "HTML stands for HyperText Markup Language.",
-            "HTML is used to structure content on the web.",
-            "Every website begins with HTML."
+            "Welcome to Full-Stack Web Development.",
+            "In this course you will build real projects and deploy them."
           ]
         },
         {
-          "title": "HTML Elements & Tags",
+          "id": "html-basics",
+          "title": "HTML Basics",
           "content": [
-            "HTML uses tags like <p>, <h1>, <div> to create structure.",
-            "Tags can contain attributes such as class and id.",
-            "Example: <img src='image.png' alt='Description'>"
+            "HTML creates the structure of webpages.",
+            "Learn about tags, elements, attributes and semantic HTML."
           ]
         },
         {
-          "title": "Links, Images & Media",
+          "id": "css-styles",
+          "title": "CSS Styling",
           "content": [
-            "Add links using the <a> tag.",
-            "Add images using the <img> tag.",
-            "You can embed videos, audio, and interactive components."
+            "CSS styles pages and creates layout.",
+            "Understand Flexbox, Grid, responsive design, and animations."
           ]
         },
         {
-          "title": "Page Layout",
+          "id": "js-basics",
+          "title": "JavaScript Essentials",
           "content": [
-            "Use the semantic elements for clean layout: <header>, <section>, <article>, <footer>.",
-            "HTML layout is improved with CSS but the skeleton starts here."
+            "JavaScript adds interactivity to the web.",
+            "We'll cover DOM, events, fetch API, and basics of modern JS."
           ]
         }
       ]
     },
 
     {
-      "id": "css-design",
-      "title": "CSS Modern Design",
-      "description": "Master modern CSS including flexbox, grid, gradient systems, neumorphism, and dark/light themes.",
+      "id": "data-science",
+      "title": "Data Science Foundations",
+      "description": "Introductory data science: Python, data manipulation, visualization, simple ML.",
       "lessons": [
         {
-          "title": "CSS Basics",
+          "id": "ds-intro",
+          "title": "What is Data Science?",
           "content": [
-            "CSS stands for Cascading Style Sheets.",
-            "CSS is used to style HTML elements.",
-            "Selectors target elements to apply styles."
+            "Data Science combines coding, math, and domain knowledge.",
+            "You will learn tools used in the industry."
           ]
         },
         {
-          "title": "Flexbox",
+          "id": "python-basics",
+          "title": "Python Basics",
           "content": [
-            "Flexbox is used for responsive layout.",
-            "Use display: flex; to activate flexbox.",
-            "Common properties: justify-content, align-items, gap."
-          ]
-        },
-        {
-          "title": "Grid",
-          "content": [
-            "CSS Grid is a two-dimensional layout system.",
-            "Use display: grid; and define rows/columns.",
-            "Grid supports auto-placement, spanning, and advanced layout."
-          ]
-        },
-        {
-          "title": "Design Systems",
-          "content": [
-            "Modern UI uses layered effects, shadows, and smooth animations.",
-            "Dark and light mode require variable-based color systems.",
-            "Glassmorphism, gradients, and minimalism are current trends."
-          ]
-        }
-      ]
-    },
-
-    {
-      "id": "js-fundamentals",
-      "title": "JavaScript Fundamentals",
-      "description": "A complete beginner-friendly guide to JavaScript programming.",
-      "lessons": [
-        {
-          "title": "JavaScript Overview",
-          "content": [
-            "JavaScript adds interactive behavior to websites.",
-            "Runs in the browser and powers most modern apps.",
-            "JS can be used for full stack development (Node.js)."
-          ]
-        },
-        {
-          "title": "Variables & Data Types",
-          "content": [
-            "Use let, const to declare variables.",
-            "Primitive types include string, number, boolean.",
-            "Objects and arrays store structured data."
-          ]
-        },
-        {
-          "title": "Functions",
-          "content": [
-            "Functions execute reusable blocks of code.",
-            "Arrow functions provide a short syntax.",
-            "Functions can accept parameters and return values."
-          ]
-        },
-        {
-          "title": "DOM Manipulation",
-          "content": [
-            "The Document Object Model represents the page structure.",
-            "Use document.querySelector() to find elements.",
-            "Use element.innerHTML, appendChild, classList, etc."
+            "Python is the most popular language for data science.",
+            "We'll learn about variables, lists, and basic pandas usage."
           ]
         }
       ]

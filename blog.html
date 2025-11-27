@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blogs — whynotyou?</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+
+<body>
+
+<header class="header">
+  <button id="theme-toggle" class="theme-toggle">🌙</button>
+  <div class="container nav">
+    <div class="logo">whynotyou?</div>
+    <nav>
+      <ul>
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="blog.html" class="active">Blogs</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li><a href="index.html#community">Community</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main style="padding:80px 0;">
+
+  <section class="container">
+
+    <h1 class="page-title fade-in-up">All Articles</h1>
+
+    <!-- SEARCH + FILTERS -->
+    <div class="blog-controls fade-in-up">
+
+      <input 
+        id="searchInput"
+        type="text" 
+        placeholder="Search articles..."
+        class="blog-search"
+      />
+
+      <div class="blog-filters">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="technology">Technology</button>
+        <button class="filter-btn" data-category="programming">Programming</button>
+        <button class="filter-btn" data-category="science">Science</button>
+        <button class="filter-btn" data-category="history">History</button>
+      </div>
+
+    </div>
+
+    <!-- BLOG GRID -->
+    <div id="blogList" class="blog-grid fade-in-up"></div>
+
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo">whynotyou?</div>
+    <p>Free tech &amp; science education for everyone.</p>
+    <p class="copy">© 2025 whynotyou? All rights reserved.</p>
+  </div>
+</footer>
+
+
+<script src="js/main.js"></script>
+
+<!-- PAGE LOGIC SCRIPT -->
+<script>
+// Load Articles + Search + Filters
+
+let ARTICLES = [];
+
+// Fetch articles
+async function loadArticles() {
+  const data = await fetch('/api/articles.json').then(r => r.json());
+  ARTICLES = data.articles;
+  renderArticles(ARTICLES);
+}
+
+// Render blog cards
+function renderArticles(list) {
+  const container = document.getElementById("blogList");
+  container.innerHTML = "";
+
+  if (!list.length) {
+    container.innerHTML = "<p class='muted'>No articles found.</p>";
+    return;
+  }
+
+  list.forEach(a => {
+    const card = document.createElement("a");
+    card.href = `article.html?id=${encodeURIComponent(a.id)}`;
+    card.className = "blog-card glow-card";
+    card.innerHTML = `
+      <h3>${a.title}</h3>
+      <p>${a.excerpt}</p>
+      <span class="read-more-inline">Read More →</span>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// Search logic
+document.getElementById("searchInput").addEventListener("input", (e) => {
+  const q = e.target.value.toLowerCase();
+  const filtered = ARTICLES.filter(a =>
+    a.title.toLowerCase().includes(q) ||
+    a.excerpt.toLowerCase().includes(q)
+  );
+  renderArticles(filtered);
+});
+
+// Filter buttons
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    document.querySelectorAll(".filter-btn")
+      .forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const category = btn.dataset.category;
+
+    if (category === "all") {
+      renderArticles(ARTICLES);
+      return;
+    }
+
+    const filtered = ARTICLES.filter(a =>
+      (a.category || "general") === category
+    );
+
+    renderArticles(filtered);
+  });
+});
+
+// Start
+loadArticles();
+</script>
+
+</body>
+</html>

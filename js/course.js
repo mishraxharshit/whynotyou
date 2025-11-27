@@ -1,84 +1,61 @@
-/* ------------------------------------------------------------
-   course.js — Lesson Loader + Progress System
-------------------------------------------------------------- */
+// course.js — Course listing + progress summary
 
 async function fetchJSON(url) {
-  return fetch(url).then(r => r.json());
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Network error");
+    return await res.json();
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
 }
 
-let currentLessonIndex = 0;
-let lessons = [];
-let courseId = null;
-
-document.addEventListener("DOMContentLoaded", initCourse);
-
-async function initCourse() {
-  const params = new URLSearchParams(location.search);
-  courseId = params.get("id");
-
-  if (!courseId) return;
-
-  const courses = await fetchJSON("/api/courses.json");
-  const course = courses.find(c => c.id == courseId);
-
-  if (!course) return;
-
-  document.getElementById("course-title").textContent = course.title;
-  lessons = course.lessons;
-
-  renderLessonList();
-  loadLesson(0);
+function getProgressForCourse(id) {
+  const raw = localStorage.getItem("course_progress_" + id);
+  if (!raw) return 0;
+  const obj = JSON.parse(raw);
+  return obj.completed ? (obj.completed.length / (obj.total || 1)) * 100 : 0;
 }
 
-/* --------------------------
-   Render Sidebar Lesson List
----------------------------*/
-function renderLessonList() {
-  const list = document.getElementById("lesson-list");
-  list.innerHTML = "";
-
-  lessons.forEach((lesson, index) => {
-    const a = document.createElement("a");
-    a.textContent = lesson.title;
-    a.href = "javascript:void(0)";
-    a.onclick = () => loadLesson(index);
-    a.id = "lesson-" + index;
-
-    list.appendChild(a);
-  });
+function saveProgressForCourse(id, completedList, total) {
+  const obj = { completed: completedList, total };
+  localStorage.setItem("course_progress_" + id, JSON.stringify(obj));
 }
 
-/* --------------------------
-   Load Lesson Content
----------------------------*/
-function loadLesson(i) {
-  currentLessonIndex = i;
+async function renderCourseList() {
+  const wrapper = document.getElementById("course-list");
+  const data = await fetchJSON("/api/courses.json");
+  if (!data || !data.courses) {
+    wrapper.innerHTML = "<p class='muted'>No courses available.</p>";
+    return;
+  }
 
-  const lesson = lessons[i];
+  wrapper.innerHTML = "";
 
-  document.getElementById("lesson-title").textContent = lesson.title;
-  document.getElementById("lesson-body").innerHTML =
-    lesson.content.replace(/\n/g, "<br><br>");
+  for (const course of data.courses) {
+    const percent = Math.round(getProgressForCourse(course.id) || 0);
 
-  updateActiveLesson();
-  updateProgress();
+    const card = document.createElement("div");
+    card.className = "course-card hover-float";
+    card.innerHTML = `
+      <h3>${course.title}</h3>
+      <p class="muted">${course.description || ""}</p>
+
+      <div style="margin-top:14px;display:flex;align-items:center;gap:12px;">
+        <div style="flex:1">
+          <div style="height:8px;background:var(--bg-alt);border-radius:999px;overflow:hidden">
+            <div style="width:${percent}%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width:.4s"></div>
+          </div>
+        </div>
+
+        <a class="btn ghost" href="course.html?id=${encodeURIComponent(course.id)}">Open</a>
+        <a class="btn primary" href="lesson.html?course=${encodeURIComponent(course.id)}&lesson=${encodeURIComponent(course.lessons[0].id)}">Start →</a>
+      </div>
+    `;
+
+    wrapper.appendChild(card);
+  }
 }
 
-/* --------------------------
-   Highlight Active Lesson
----------------------------*/
-function updateActiveLesson() {
-  document.querySelectorAll(".lesson-list a").forEach(el => {
-    el.classList.remove("active");
-  });
-  document.getElementById("lesson-" + currentLessonIndex).classList.add("active");
-}
-
-/* --------------------------
-   Update Progress Bar
----------------------------*/
-function updateProgress() {
-  const bar = document.getElementById("progress-bar");
-  const percent = ((currentLessonIndex + 1) / lessons.length) * 100;
-  bar.style.width = percent + "%";
-}
+document.addEventListener("DOMContentLoaded", renderCourseList);
