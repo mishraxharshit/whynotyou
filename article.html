@@ -4,54 +4,41 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Article — whynotyou?</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/article.css">
 </head>
-
 <body>
 
 <header class="header">
-    <button id="theme-toggle" class="theme-toggle">🌙</button>
-    <div class="container nav">
-        <div class="logo">whynotyou?</div>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/index.html#blogs">Blogs</a></li>
-                <li><a href="/index.html#courses">Courses</a></li>
-            </ul>
-        </nav>
-    </div>
+  <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
+  <div class="container nav">
+    <div class="logo">whynotyou?</div>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog.html">Blogs</a></li>
+        <li><a href="/course.html">Courses</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
-
 
 <main class="article-wrapper">
   <div class="article-container">
-
-    <!-- SIDEBAR -->
     <aside class="article-sidebar">
       <h3>Contents</h3>
       <nav id="toc"></nav>
     </aside>
-
-    <!-- ARTICLE BODY -->
     <article class="article-body">
       <h1 id="article-title">Loading...</h1>
       <p class="meta">Premium reading experience • Zero noise • 100% learning</p>
-
-      <div id="article-content" class="article-content">
-        <!-- Content loaded by JS -->
-      </div>
+      <div id="article-content" class="article-content"></div>
     </article>
-
   </div>
 </main>
-
 
 <footer class="footer">
   <div class="container footer-inner">
@@ -61,50 +48,21 @@
   </div>
 </footer>
 
-
 <script src="js/main.js"></script>
-
 <script>
-/* ---------------------------------------
-   Load Article Data
-----------------------------------------*/
 async function loadArticle() {
   const params = new URLSearchParams(location.search);
   const id = params.get("id");
-
   const data = await fetch('/api/articles.json').then(r => r.json());
   const article = data.articles.find(a => a.id == id);
-
   if (!article) {
     document.getElementById("article-title").textContent = "Article Not Found";
     return;
   }
-
   document.getElementById("article-title").textContent = article.title;
-  document.getElementById("article-content").innerHTML = article.content.replace(/\n/g, "<br><br>");
-
-  generateTOC();
+  document.getElementById("article-content").innerHTML = article.content.map(p => `<p>${p}</p>`).join("");
 }
-
-/* ---------------------------------------
-   Generate Table of Contents
-----------------------------------------*/
-function generateTOC() {
-  const toc = document.getElementById("toc");
-  const headings = document.querySelectorAll(".article-body h2, .article-body h3");
-
-  headings.forEach(h => {
-    const link = document.createElement("a");
-    link.textContent = h.textContent;
-    link.href = "#" + h.textContent.toLowerCase().replace(/\s+/g, "-");
-    h.id = link.href.split("#")[1];
-    toc.appendChild(link);
-  });
-}
-
 document.addEventListener("DOMContentLoaded", loadArticle);
 </script>
-
 </body>
 </html>
-

@@ -1,67 +1,32 @@
-{
-  "courses": [
+[
     {
-      "id": "fullstack",
-      "title": "Full-Stack Web Development",
-      "description": "Modern front-end and back-end development, projects and deployment.",
-      "lessons": [
-        {
-          "id": "intro",
-          "title": "Introduction to the Course",
-          "content": [
-            "Welcome to Full-Stack Web Development.",
-            "In this course you will build real projects and deploy them."
-          ]
-        },
-        {
-          "id": "html-basics",
-          "title": "HTML Basics",
-          "content": [
-            "HTML creates the structure of webpages.",
-            "Learn about tags, elements, attributes and semantic HTML."
-          ]
-        },
-        {
-          "id": "css-styles",
-          "title": "CSS Styling",
-          "content": [
-            "CSS styles pages and creates layout.",
-            "Understand Flexbox, Grid, responsive design, and animations."
-          ]
-        },
-        {
-          "id": "js-basics",
-          "title": "JavaScript Essentials",
-          "content": [
-            "JavaScript adds interactivity to the web.",
-            "We'll cover DOM, events, fetch API, and basics of modern JS."
-          ]
-        }
-      ]
+        "id": "html",
+        "title": "Full HTML Mastery",
+        "description": "Learn HTML from zero to expert with examples, cheatsheets, and real projects.",
+        "lessons": [
+            {
+                "id": 1,
+                "title": "Introduction to HTML",
+                "content": "<h2>What is HTML?</h2><p>HTML stands for HyperText Markup Language...</p>"
+            },
+            {
+                "id": 2,
+                "title": "HTML Tags Deep Dive",
+                "content": "<h2>HTML Tags</h2><p>Tags are used to structure content on the web...</p>"
+            }
+        ]
     },
 
     {
-      "id": "data-science",
-      "title": "Data Science Foundations",
-      "description": "Introductory data science: Python, data manipulation, visualization, simple ML.",
-      "lessons": [
-        {
-          "id": "ds-intro",
-          "title": "What is Data Science?",
-          "content": [
-            "Data Science combines coding, math, and domain knowledge.",
-            "You will learn tools used in the industry."
-          ]
-        },
-        {
-          "id": "python-basics",
-          "title": "Python Basics",
-          "content": [
-            "Python is the most popular language for data science.",
-            "We'll learn about variables, lists, and basic pandas usage."
-          ]
-        }
-      ]
+        "id": "css",
+        "title": "CSS Complete Guide",
+        "description": "Master modern, responsive, animated CSS with real-world examples.",
+        "lessons": [
+            {
+                "id": 1,
+                "title": "What is CSS?",
+                "content": "<h2>CSS Basics</h2><p>CSS stands for Cascading Style Sheets...</p>"
+            }
+        ]
     }
-  ]
-}
+]

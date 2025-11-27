@@ -1,88 +1,77 @@
-// lesson.js — single lesson loader + next/prev + progress persistence
+function getQuery(param) {
+  return new URLSearchParams(window.location.search).get(param);
+}
 
 async function fetchJSON(url) {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error("Network error");
-  return res.json();
+  try {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return await r.json();
+  } catch (e) {
+    console.error("JSON load error:", e);
+    alert("Failed to load lesson. Please try again.");
+    return null;
+  }
 }
 
-function getProgressObj(courseId) {
-  const raw = localStorage.getItem("course_progress_" + courseId);
-  return raw ? JSON.parse(raw) : { completed: [], total: 0 };
-}
+let courseId, lessonId, courseData;
 
-function setProgressObj(courseId, obj) {
-  localStorage.setItem("course_progress_" + courseId, JSON.stringify(obj));
-}
+async function loadLesson() {
+  courseId = getQuery("course");
+  lessonId = parseInt(getQuery("lesson")) || 1;
 
-async function loadLessonPage() {
-  const params = new URLSearchParams(location.search);
-  const courseId = params.get("course");
-  const lessonId = params.get("lesson");
-
-  if (!courseId || !lessonId) {
-    document.getElementById("lesson-title").textContent = "Invalid lesson";
+  if (!courseId) {
+    document.getElementById("lesson-body").innerHTML = "<p>Invalid course link.</p>";
     return;
   }
 
-  const data = await fetchJSON("/api/courses.json");
-  const course = data.courses.find(c => c.id === courseId);
-  if (!course) {
-    document.getElementById("lesson-title").textContent = "Course not found";
+  const courses = await fetchJSON("/api/courses.json");
+  if (!courses) return;
+
+  courseData = courses.find(c => c.id === courseId);
+  if (!courseData) {
+    document.getElementById("lesson-body").innerHTML = "<p>Course not found.</p>";
     return;
   }
 
-  const lessons = course.lessons;
-  const index = lessons.findIndex(l => String(l.id) === String(lessonId));
-  if (index === -1) {
-    document.getElementById("lesson-title").textContent = "Lesson not found";
+  const lesson = courseData.lessons.find(l => l.id === lessonId);
+  if (!lesson) {
+    document.getElementById("lesson-body").innerHTML = "<p>Lesson not found.</p>";
     return;
   }
 
-  // Populate UI
-  const lesson = lessons[index];
-  document.title = lesson.title + " — " + course.title;
-  document.getElementById("lesson-title").textContent = lesson.title;
-  document.getElementById("lesson-meta").textContent = course.title;
+  document.getElementById("course-title").textContent = courseData.title;
+  document.getElementById("lesson-title").textContent = `${lessonId}. ${lesson.title}`;
+  document.getElementById("lesson-body").innerHTML = lesson.content;
 
-  // Render content (supports array or string)
-  let html = "";
-  if (Array.isArray(lesson.content)) {
-    html = lesson.content.map(p => `<p>${p}</p>`).join("");
-  } else {
-    html = lesson.content;
-  }
-  document.getElementById("lesson-content").innerHTML = html;
-
-  // Prev / Next link
-  const prevBtn = document.getElementById("prev-btn");
-  const nextBtn = document.getElementById("next-btn");
-
-  if (index > 0) {
-    prevBtn.style.visibility = "visible";
-    prevBtn.href = `lesson.html?course=${encodeURIComponent(courseId)}&lesson=${encodeURIComponent(lessons[index-1].id)}`;
-  } else {
-    prevBtn.style.visibility = "hidden";
-  }
-
-  if (index < lessons.length - 1) {
-    nextBtn.style.visibility = "visible";
-    nextBtn.href = `lesson.html?course=${encodeURIComponent(courseId)}&lesson=${encodeURIComponent(lessons[index+1].id)}`;
-  } else {
-    nextBtn.style.visibility = "hidden";
-  }
-
-  // Save progress
-  let prog = getProgressObj(courseId);
-  prog.total = lessons.length;
-  if (!prog.completed.includes(lesson.id)) {
-    prog.completed.push(lesson.id);
-    setProgressObj(courseId, prog);
-  }
-
-  // Update progress UI
-  const percent = Math.round((prog.completed.length / prog.total) * 100);
-  document.getElementById("lesson-progress").style.width = percent + "%";
+  createSidebar();
+  updateButtons();
 }
 
-document.addEventListener("DOMContentLoaded", loadLessonPage);
+function createSidebar() {
+  const list = document.getElementById("lesson-list");
+  list.innerHTML = "";
+
+  courseData.lessons.forEach(l => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = `lesson.html?course=${courseId}&lesson=${l.id}`;
+    a.textContent = `${l.id}. ${l.title}`;
+    if (l.id === lessonId) a.className = "active";
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+}
+
+function updateButtons() {
+  const prev = document.getElementById("prev-lesson");
+  const next = document.getElementById("next-lesson");
+
+  prev.onclick = () => lessonId > 1 && (location.href = `lesson.html?course=${courseId}&lesson=${lessonId - 1}`);
+  next.onclick = () => lessonId < courseData.lessons.length && (location.href = `lesson.html?course=${courseId}&lesson=${lessonId + 1}`);
+
+  prev.style.opacity = lessonId <= 1 ? "0.4" : "1";
+  next.style.opacity = lessonId >= courseData.lessons.length ? "0.4" : "1";
+}
+
+document.addEventListener("DOMContentLoaded", loadLesson);

@@ -1,46 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Courses — whynotyou?</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/course.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses — WhyNotYou?</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script defer src="js/course.js"></script>
 </head>
 
 <body>
+    <header class="navbar glass">
+        <div class="logo">WhyNotYou?</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a class="active" href="course.html">Courses</a>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
+    </header>
 
-<header class="header">
-  <div class="container nav">
-    <div class="logo">whynotyou?</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="blog.html">Blogs</a></li>
-        <li><a href="course.html" class="active">Courses</a></li>
-      </ul>
-    </nav>
-    <button id="theme-toggle" class="theme-toggle">🌙</button>
-  </div>
-</header>
+    <section class="page-hero glass">
+        <h1>Premium Learning</h1>
+        <p>Explore world-class, free courses designed for your growth.</p>
+    </section>
 
-<main class="container" style="padding:60px 20px;">
-  <div id="course-list" class="courses-grid"></div>
-</main>
+    <section class="courses-container" id="courses-list">
+        <!-- Loaded dynamically by course.js -->
+    </section>
 
-<footer class="footer">
-  <div class="container footer-inner">
-    <div class="footer-logo">whynotyou?</div>
-    <p>Free tech &amp; science education for everyone.</p>
-    <p class="copy">© 2025 whynotyou? All rights reserved.</p>
-  </div>
-</footer>
-
-<script src="js/main.js"></script>
-<script src="js/course.js"></script>
+    <footer class="footer glass">
+        <p>© 2025 WhyNotYou? — Free Tech & Science Community</p>
+    </footer>
 </body>
 </html>

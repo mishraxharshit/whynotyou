@@ -225,3 +225,7 @@ body.dark {
   }
 }
 
+body.dark {
+  background: #0d0d0f;
+  color: #eeeeee;
+}

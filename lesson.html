@@ -1,63 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Lesson — whynotyou?</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson — WhyNotYou?</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/article.css">
-  <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script defer src="js/lesson.js"></script>
 </head>
 
 <body>
+    <header class="navbar glass">
+        <div class="logo">WhyNotYou?</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="course.html">Courses</a>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle">Dark Mode</button>
+    </header>
 
-<header class="header">
-  <div class="container nav">
-    <div class="logo">whynotyou?</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="course.html">Courses</a></li>
-        <li><a href="blog.html">Blogs</a></li>
-      </ul>
-    </nav>
-    <button id="theme-toggle" class="theme-toggle">🌙</button>
-  </div>
-</header>
+    <div class="lesson-wrapper">
 
-<main class="article-wrapper">
-  <div class="container">
-    <article class="article-body glass" id="lesson-article">
-      <h1 id="lesson-title">Loading…</h1>
-      <p id="lesson-meta" class="meta muted"></p>
-      <div id="lesson-content"></div>
+        <!-- SIDEBAR -->
+        <aside class="lesson-sidebar glass" id="lesson-sidebar">
+            <h3 id="course-title">Course</h3>
+            <ul id="lesson-list"></ul>
+        </aside>
 
-      <div style="display:flex;gap:12px;margin-top:28px;align-items:center;">
-        <a id="prev-btn" class="btn ghost" href="#" style="visibility:hidden">← Previous</a>
-        <a id="next-btn" class="btn primary" href="#" style="visibility:hidden">Next →</a>
+        <!-- MAIN CONTENT -->
+        <main class="lesson-content glass fade-in">
+            <h1 id="lesson-title">Lesson Title</h1>
+            <div id="lesson-body"></div>
 
-        <div style="margin-left:auto;text-align:right;">
-          <div class="muted">Progress</div>
-          <div style="width:220px;background:var(--bg-alt);height:8px;border-radius:999px;overflow:hidden;margin-top:6px;">
-            <span id="lesson-progress" style="display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width:.4s;"></span>
-          </div>
-        </div>
-      </div>
+            <div class="lesson-navigation">
+                <button id="prev-lesson" class="nav-btn">← Previous</button>
+                <button id="next-lesson" class="nav-btn">Next →</button>
+            </div>
+        </main>
 
-    </article>
-  </div>
-</main>
+    </div>
 
-<footer class="footer">
-  <div class="container footer-inner">
-    <div class="footer-logo">whynotyou?</div>
-    <p>Free tech &amp; science education for everyone.</p>
-  </div>
-</footer>
+    <footer class="footer glass">
+        <p>© 2025 WhyNotYou? — Free Tech & Science Community</p>
+    </footer>
 
-<script src="js/main.js"></script>
-<script src="js/lesson.js"></script>
 </body>
 </html>
