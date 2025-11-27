@@ -1,3 +1,74 @@
-/* animations.css - subtle, premium micro-interactions */
-.fade-in{opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.9,.3,1)}
-.fade-in.show{opacity:1;transform:none}
+/* --------------------------------------------
+   animations.css
+   Soft, premium micro-interactions for whynotyou?
+--------------------------------------------- */
+
+/* Basic entrance animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: slideUp 0.7s cubic-bezier(.2,.9,.3,1) forwards;
+}
+
+.pop {
+  opacity: 0;
+  transform: scale(0.98);
+  animation: popIn 0.45s cubic-bezier(.2,.9,.3,1) forwards;
+}
+
+/* Hover helpers */
+.hover-float {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.hover-float:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.hover-glow {
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+.hover-glow:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+  transform: translateY(-4px);
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  0%   { transform: scale(0.96); opacity: 0; }
+  60%  { transform: scale(1.02); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Motion-safe: reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .slide-up, .pop, .hover-float, .hover-glow {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Small utility delays (useful in markup) */
+.delay-100 { animation-delay: 0.10s; }
+.delay-200 { animation-delay: 0.20s; }
+.delay-300 { animation-delay: 0.30s; }
+.delay-400 { animation-delay: 0.40s; }
+.delay-500 { animation-delay: 0.50s; }
+

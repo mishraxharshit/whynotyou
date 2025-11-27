@@ -1,0 +1,133 @@
+/* ------------------------------------------------------------
+   course.css — Wiki-Style Learning System
+------------------------------------------------------------- */
+
+:root {
+  --text: #111;
+  --subtext: #555;
+  --line: #ddd;
+  --bg: #fff;
+  --card-bg: #fafafa;
+}
+
+body.dark {
+  --text: #eee;
+  --subtext: #aaa;
+  --line: #2b2b2b;
+  --bg: #0a0a0b;
+  --card-bg: #111;
+}
+
+/* Wrapper grid */
+.course-wrapper {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  max-width: 1450px;
+  margin: auto;
+  padding: 60px 20px;
+  gap: 45px;
+}
+
+/* Sidebar */
+.course-sidebar {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 25px;
+  border: 1px solid var(--line);
+  position: sticky;
+  top: 120px;
+  height: max-content;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.course-sidebar h2 {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+/* Lesson list */
+.lesson-list a {
+  display: block;
+  padding: 12px 0;
+  border-left: 3px solid transparent;
+  color: var(--subtext);
+  text-decoration: none;
+  transition: 0.2s;
+  font-weight: 500;
+}
+
+.lesson-list a:hover {
+  color: var(--text);
+}
+
+.lesson-list a.active {
+  color: var(--text);
+  border-left-color: var(--text);
+  font-weight: 700;
+}
+
+/* Progress bar */
+.course-progress {
+  margin-top: 25px;
+  background: var(--card-bg);
+}
+
+.course-progress-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.course-progress-bar {
+  height: 9px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.course-progress-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--link), var(--link-hover));
+  width: 0%;
+  transition: width 0.4s;
+}
+
+/* Content area */
+.course-content {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.course-content h1 {
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.lesson-body p {
+  font-size: 19px;
+  line-height: 1.75;
+  margin: 16px 0;
+}
+
+/* Code blocks */
+.lesson-body pre {
+  background: #1c1c1e;
+  color: #eee;
+  padding: 18px;
+  border-radius: 14px;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+/* Images */
+.lesson-body img {
+  width: 100%;
+  border-radius: 14px;
+  margin: 25px 0;
+}
+
+/* For responsive layout → handled more fully in responsive.css */

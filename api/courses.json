@@ -1,122 +1,122 @@
-[
-  {
-    "id": "data-science-foundations",
-    "title": "Introduction to Data Science",
-    "level": "Beginner",
-    "description": "Beginner-friendly path into the world of data, tools, and models.",
-    "weeks": 4,
-    "units": [
-      {
-        "title": "Foundations of Data",
-        "lessons": [
-          "What is data?",
-          "Collection methods",
-          "Lifecycle of data",
-          "Tools overview"
-        ]
-      },
-      {
-        "title": "Essential Python for Data Work",
-        "lessons": [
-          "Python basics",
-          "Jupyter notebooks",
-          "DataFrames with Pandas",
-          "Practical exercises"
-        ]
-      },
-      {
-        "title": "Visualization",
-        "lessons": [
-          "Chart types",
-          "Color theory",
-          "Matplotlib & Seaborn",
-          "Storytelling with data"
-        ]
-      },
-      {
-        "title": "Intro to Machine Learning",
-        "lessons": [
-          "Supervised vs unsupervised",
-          "Train/test split",
-          "Linear models",
-          "Final mini-project"
-        ]
-      }
-    ]
-  },
-  {
-    "id": "full-stack-web-dev",
-    "title": "Full-Stack Web Development",
-    "level": "Beginner \u2192 Intermediate",
-    "description": "Modern front-end, solid back-end, real deployment.",
-    "weeks": 8,
-    "units": [
-      {
-        "title": "Web Foundations",
-        "lessons": [
-          "How the web works",
-          "HTTP & DNS",
-          "HTML5",
-          "CSS architecture"
-        ]
-      },
-      {
-        "title": "Responsive Design",
-        "lessons": [
-          "Flexbox & Grid",
-          "Mobile-first",
-          "Accessibility",
-          "Performance"
-        ]
-      },
-      {
-        "title": "JavaScript Essentials",
-        "lessons": [
-          "DOM & Events",
-          "Fetch API",
-          "Async patterns"
-        ]
-      },
-      {
-        "title": "Front-End Frameworks",
-        "lessons": [
-          "React basics",
-          "State & props",
-          "Building an SPA"
-        ]
-      },
-      {
-        "title": "Back-End Foundations",
-        "lessons": [
-          "Node & Express",
-          "CRUD",
-          "Authentication"
-        ]
-      },
-      {
-        "title": "Databases",
-        "lessons": [
-          "SQL vs NoSQL",
-          "Schema design",
-          "MongoDB intro"
-        ]
-      },
-      {
-        "title": "Deployment",
-        "lessons": [
-          "Git & GitHub",
-          "Hosting options",
-          "Environment variables"
-        ]
-      },
-      {
-        "title": "Final Project",
-        "lessons": [
-          "Design",
-          "Build",
-          "Deploy"
-        ]
-      }
-    ]
-  }
-]
+{
+  "courses": [
+    {
+      "id": "html-master",
+      "title": "HTML Mastery",
+      "description": "Learn HTML from beginner to expert with a clean Wikipedia-style course format.",
+      "lessons": [
+        {
+          "title": "Introduction to HTML",
+          "content": [
+            "HTML stands for HyperText Markup Language.",
+            "HTML is used to structure content on the web.",
+            "Every website begins with HTML."
+          ]
+        },
+        {
+          "title": "HTML Elements & Tags",
+          "content": [
+            "HTML uses tags like <p>, <h1>, <div> to create structure.",
+            "Tags can contain attributes such as class and id.",
+            "Example: <img src='image.png' alt='Description'>"
+          ]
+        },
+        {
+          "title": "Links, Images & Media",
+          "content": [
+            "Add links using the <a> tag.",
+            "Add images using the <img> tag.",
+            "You can embed videos, audio, and interactive components."
+          ]
+        },
+        {
+          "title": "Page Layout",
+          "content": [
+            "Use the semantic elements for clean layout: <header>, <section>, <article>, <footer>.",
+            "HTML layout is improved with CSS but the skeleton starts here."
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "css-design",
+      "title": "CSS Modern Design",
+      "description": "Master modern CSS including flexbox, grid, gradient systems, neumorphism, and dark/light themes.",
+      "lessons": [
+        {
+          "title": "CSS Basics",
+          "content": [
+            "CSS stands for Cascading Style Sheets.",
+            "CSS is used to style HTML elements.",
+            "Selectors target elements to apply styles."
+          ]
+        },
+        {
+          "title": "Flexbox",
+          "content": [
+            "Flexbox is used for responsive layout.",
+            "Use display: flex; to activate flexbox.",
+            "Common properties: justify-content, align-items, gap."
+          ]
+        },
+        {
+          "title": "Grid",
+          "content": [
+            "CSS Grid is a two-dimensional layout system.",
+            "Use display: grid; and define rows/columns.",
+            "Grid supports auto-placement, spanning, and advanced layout."
+          ]
+        },
+        {
+          "title": "Design Systems",
+          "content": [
+            "Modern UI uses layered effects, shadows, and smooth animations.",
+            "Dark and light mode require variable-based color systems.",
+            "Glassmorphism, gradients, and minimalism are current trends."
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "js-fundamentals",
+      "title": "JavaScript Fundamentals",
+      "description": "A complete beginner-friendly guide to JavaScript programming.",
+      "lessons": [
+        {
+          "title": "JavaScript Overview",
+          "content": [
+            "JavaScript adds interactive behavior to websites.",
+            "Runs in the browser and powers most modern apps.",
+            "JS can be used for full stack development (Node.js)."
+          ]
+        },
+        {
+          "title": "Variables & Data Types",
+          "content": [
+            "Use let, const to declare variables.",
+            "Primitive types include string, number, boolean.",
+            "Objects and arrays store structured data."
+          ]
+        },
+        {
+          "title": "Functions",
+          "content": [
+            "Functions execute reusable blocks of code.",
+            "Arrow functions provide a short syntax.",
+            "Functions can accept parameters and return values."
+          ]
+        },
+        {
+          "title": "DOM Manipulation",
+          "content": [
+            "The Document Object Model represents the page structure.",
+            "Use document.querySelector() to find elements.",
+            "Use element.innerHTML, appendChild, classList, etc."
+          ]
+        }
+      ]
+    }
+  ]
+}

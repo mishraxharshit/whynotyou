@@ -1,0 +1,134 @@
+/* ------------------------------------------------------------
+   article.css — Premium Magazine Reading Template
+------------------------------------------------------------- */
+
+:root {
+  --text: #111;
+  --subtext: #444;
+  --line: #e5e5e5;
+  --bg: #fff;
+  --card-bg: #fafafa;
+  --dark-bg: #0a0a0b;
+}
+
+body.dark {
+  --text: #eee;
+  --subtext: #aaa;
+  --line: #2b2b2b;
+  --bg: #0a0a0b;
+  --card-bg: #111;
+}
+
+/* Wrapper */
+.article-wrapper {
+  padding: 60px 20px;
+  background: var(--bg);
+}
+
+/* Main grid */
+.article-container {
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 45px;
+}
+
+/* Sidebar */
+.article-sidebar {
+  position: sticky;
+  top: 120px;
+  height: max-content;
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+}
+
+.article-sidebar h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+#toc a {
+  display: block;
+  padding: 8px 0;
+  color: var(--subtext);
+  font-size: 15px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+#toc a:hover {
+  color: var(--text);
+}
+
+
+/* Article Body */
+.article-body {
+  padding: 30px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  border: 1px solid var(--line);
+}
+
+.article-body .meta {
+  margin-bottom: 25px;
+  color: var(--subtext);
+}
+
+.article-body h1 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.article-body h2 {
+  margin-top: 40px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.article-body h3 {
+  margin-top: 25px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.article-body p {
+  font-size: 19px;
+  line-height: 1.75;
+  margin: 18px 0;
+  color: var(--text);
+}
+
+/* Images */
+.article-body img {
+  width: 100%;
+  border-radius: 14px;
+  margin: 25px 0;
+}
+
+/* Quotes */
+.article-body blockquote {
+  padding: 25px 30px;
+  border-left: 4px solid var(--text);
+  background: var(--card-bg);
+  border-radius: 12px;
+  font-size: 19px;
+  font-style: italic;
+  margin: 35px 0;
+}
+
+
+/* Code blocks */
+.article-body pre {
+  background: #1c1c1e;
+  color: #eee;
+  padding: 18px;
+  border-radius: 14px;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+/* Mobile tweaks covered in responsive.css */
