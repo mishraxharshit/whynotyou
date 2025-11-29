@@ -56,19 +56,205 @@
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* Motion-safe: reduce motion if user prefers */
-@media (prefers-reduced-motion: reduce) {
-  .fade-in, .slide-up, .pop, .hover-float, .hover-glow {
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
+/* Luxury easing curves */
+:root {
+  --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero fade-in on load */
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Small utility delays (useful in markup) */
-.delay-100 { animation-delay: 0.10s; }
-.delay-200 { animation-delay: 0.20s; }
-.delay-300 { animation-delay: 0.30s; }
-.delay-400 { animation-delay: 0.40s; }
-.delay-500 { animation-delay: 0.50s; }
+.hero {
+  animation: hero-fade 1.2s var(--ease-luxury) forwards;
+}
+
+/* Hero title elegant reveal */
+@keyframes title-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1 {
+  animation: title-reveal 1s var(--ease-luxury) 0.2s forwards;
+  opacity: 0;
+}
+
+/* Paragraph fade */
+@keyframes para-fade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero .lead {
+  animation: para-fade 1s var(--ease-luxury) 0.4s forwards;
+  opacity: 0;
+}
+
+/* CTA buttons entrance */
+@keyframes cta-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-ctas {
+  animation: cta-entrance 1s var(--ease-luxury) 0.6s forwards;
+  opacity: 0;
+}
+
+/* Card stagger entrance */
+@keyframes card-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.course-card, .blog-card {
+  animation: card-entrance 0.9s var(--ease-luxury) backwards;
+  opacity: 0;
+}
+
+.course-card:nth-child(1) { animation-delay: 0.1s; }
+.course-card:nth-child(2) { animation-delay: 0.25s; }
+.course-card:nth-child(3) { animation-delay: 0.4s; }
+.course-card:nth-child(4) { animation-delay: 0.55s; }
+.course-card:nth-child(5) { animation-delay: 0.7s; }
+.course-card:nth-child(6) { animation-delay: 0.85s; }
+
+/* Luxury card hover */
+.course-card, .blog-card {
+  transition: all 0.8s var(--ease-smooth);
+  will-change: transform, box-shadow;
+}
+
+.course-card:hover, .blog-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
+}
+
+/* Smooth button hover */
+.btn {
+  transition: all 0.6s var(--ease-luxury);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.6s var(--ease-luxury);
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+/* Section titles fade in */
+@keyframes section-title {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-title {
+  animation: section-title 0.8s var(--ease-luxury) forwards;
+}
+
+/* Glass card subtle animation */
+.card.glass {
+  animation: card-entrance 1s var(--ease-luxury) forwards;
+  backdrop-filter: blur(10px);
+  transition: all 0.8s var(--ease-smooth);
+}
+
+.card.glass:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+}
+
+/* Progress bar smooth animation */
+@keyframes progress-fill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 52%;
+  }
+}
+
+.progress span {
+  animation: progress-fill 1.5s var(--ease-out) 0.8s forwards;
+  display: block;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+  width: 0;
+}
+
+/* Fade in class */
+.fade-in {
+  animation: hero-fade 0.9s var(--ease-luxury) forwards;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 

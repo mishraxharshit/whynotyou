@@ -8,6 +8,301 @@ html, body {
   overflow-x: hidden;
 }
 
+/* Mobile-first approach */
+* {
+  box-sizing: border-box;
+}
+
+/* Tablets & Small Screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  /* Hero section mobile */
+  .hero-inner {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+
+  .hero-copy {
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  .hero .lead {
+    font-size: 1.1rem;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 14px 24px;
+  }
+
+  /* Card layout */
+  .course-card, .blog-card {
+    padding: 1.5rem;
+  }
+
+  .course-card h2, .blog-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .course-card p, .blog-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Grid adjust */
+  .courses-grid, .blogs-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Header nav */
+  .nav {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+  }
+
+  .theme-toggle {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+
+  /* Section title */
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+  }
+
+  /* Footer */
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-size: 1.3rem;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  /* Hero adjustments */
+  .hero {
+    padding: 1.5rem 0;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+  }
+
+  .hero .lead {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .hero-ctas {
+    gap: 0.75rem;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+
+  /* Cards */
+  .course-card, .blog-card {
+    padding: 1.2rem;
+    border-radius: 8px;
+  }
+
+  .course-card h2 {
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card.glass {
+    padding: 1rem;
+  }
+
+  .card-header {
+    font-size: 0.85rem;
+  }
+
+  .card-body h3 {
+    font-size: 1rem;
+  }
+
+  .meta {
+    font-size: 0.8rem;
+  }
+
+  /* Section title */
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .gradient-title {
+    font-size: 1.4rem;
+  }
+
+  .section-sub {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Header mobile */
+  .header {
+    padding: 1rem 0;
+  }
+
+  nav {
+    display: none;
+  }
+
+  nav.active {
+    display: flex;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    flex-direction: column;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  nav li {
+    width: 100%;
+  }
+
+  nav a {
+    display: block;
+    padding: 0.75rem;
+  }
+
+  /* Mobile menu toggle */
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text);
+  }
+
+  .theme-toggle {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* Animations adjust for mobile */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Touch-friendly spacing */
+  .btn, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Reduce animation on mobile for performance */
+  .course-card:nth-child(2) { animation-delay: 0.15s; }
+  .course-card:nth-child(3) { animation-delay: 0.25s; }
+  .course-card:nth-child(4) { animation-delay: 0.35s; }
+
+  /* Footer */
+  .footer {
+    padding: 1.5rem 0;
+  }
+
+  .footer p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Ultra small phones */
+@media (max-width: 360px) {
+  .hero h1 {
+    font-size: 1.4rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero {
+    padding: 1rem 0;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero .lead {
+    font-size: 0.95rem;
+  }
+}
+
 /* ---------------------------
    HEADER & NAV
 ----------------------------*/

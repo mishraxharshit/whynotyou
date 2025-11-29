@@ -48,3 +48,20 @@ if (toggleBtn) {
     toggleBtn.textContent = isDark ? "Light Mode" : "Dark Mode";
   });
 }
+
+// Mobile menu toggle
+const menuToggle = document.getElementById("menu-toggle");
+const navMenu = document.getElementById("nav-menu");
+
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+
+  // Close menu when link clicked
+  navMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+    });
+  });
+}
