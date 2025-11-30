@@ -1,24 +1,4 @@
 /* js/main.js – FINAL DARK MODE + EVERYTHING FIXED */
-async function fetchJSON(url) {
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Network error");
-    return await res.json();
-  } catch (err) {
-    console.error(err);
-    alert("Failed to load content. Check connection.");
-    return null;
-  }
-}
-
-/* === ARTICLES & COURSES (only on homepage) === */
-async function renderArticles() { /* ... your existing code ... */ }
-async function renderCourses() { /* ... your existing code ... */ }
-
-document.addEventListener("DOMContentLoaded", () => {
-  renderArticles();
-  renderCourses();
-});
 
 /* DARK MODE – WORKS ON EVERY PAGE */
 const toggleBtn = document.getElementById("theme-toggle");
@@ -65,3 +45,65 @@ if (menuToggle) {
     });
   });
 }
+
+// ============================================
+// DARK/LIGHT MODE TOGGLE - WORKING VERSION
+// ============================================
+
+console.log("main.js loaded");
+
+// Dark/Light Mode Toggle
+const themeToggle = document.getElementById("theme-toggle");
+const body = document.body;
+
+// Get saved theme or system preference
+const savedTheme = localStorage.getItem("whynotyou-theme") || 
+  (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+// Apply theme
+function applyTheme(theme) {
+  if (theme === "dark") {
+    body.classList.add("dark");
+    themeToggle.textContent = "☀️";
+  } else {
+    body.classList.remove("dark");
+    themeToggle.textContent = "🌙";
+  }
+  localStorage.setItem("whynotyou-theme", theme);
+}
+
+// Initialize
+applyTheme(savedTheme);
+
+// Toggle on click
+themeToggle.addEventListener("click", () => {
+  const isDark = body.classList.contains("dark");
+  applyTheme(isDark ? "light" : "dark");
+});
+
+// Load courses
+async function loadCourses() {
+  const list = document.getElementById("courses-list");
+  if (!list) return;
+
+  try {
+    const res = await fetch("api/courses.json");
+    const data = await res.json();
+    
+    list.innerHTML = "";
+    data.forEach(course => {
+      const card = document.createElement("div");
+      card.className = "course-card";
+      card.innerHTML = `
+        <h2>${course.title}</h2>
+        <p>${course.description}</p>
+        <a href="lesson.html?course=${course.id}&chapter=1&topic=1" class="read-more">Start Learning →</a>
+      `;
+      list.appendChild(card);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadCourses);

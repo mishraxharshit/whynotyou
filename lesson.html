@@ -1,87 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lesson — WhyNotYou?</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lesson — whynotyou?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/lesson.css">
 </head>
 <body>
 
-<header class="header">
-  <div class="container nav">
-    <div class="logo"><a href="index.html">whynotyou?</a></div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="course.html">Courses</a></li>
-      </ul>
-    </nav>
-    <button id="theme-toggle">Dark Mode</button>
-  </div>
-</header>
-
-<div style="display:flex; margin-top:60px; gap:20px; max-width:1200px; margin-left:auto; margin-right:auto;">
-  <aside style="width:300px; background:var(--card-bg); padding:20px; border-radius:12px;">
-    <h3 id="course-title">Course</h3>
-    <ul id="lesson-list" style="list-style:none; padding:0;"></ul>
-  </aside>
-  <main style="flex:1; background:var(--card-bg); padding:30px; border-radius:12px;">
-    <h1 id="lesson-title">Loading...</h1>
-    <div id="lesson-body"></div>
-    <div style="margin-top:40px;">
-      <button onclick="history.back()">Back</button>
+  <header class="header">
+    <div class="container nav">
+      <div class="logo"><a href="index.html">whynotyou?</a></div>
+      <button class="menu-toggle" id="menu-toggle">☰</button>
+      <nav id="nav-menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="blog.html">Blogs</a></li>
+          <li><a href="course.html">Courses</a></li>
+          <li><a href="#community">Community</a></li>
+        </ul>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle">🌙</button>
     </div>
+  </header>
+
+  <main class="lesson-container">
+    <!-- Sidebar Navigation -->
+    <aside class="lesson-sidebar">
+      <div class="sidebar-header">
+        <h3 id="course-title">Loading...</h3>
+        <button class="sidebar-close" id="sidebar-close">✕</button>
+      </div>
+      <div class="sidebar-content">
+        <div id="chapters-list" class="chapters-list"></div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <article class="lesson-content">
+      <div class="lesson-header">
+        <button class="sidebar-toggle" id="sidebar-toggle">☰ Menu</button>
+        <div class="breadcrumb" id="breadcrumb"></div>
+      </div>
+
+      <div class="lesson-body">
+        <h1 id="lesson-title">Loading...</h1>
+        <div class="lesson-meta">
+          <span id="lesson-duration" class="duration"></span>
+          <span id="lesson-difficulty" class="difficulty"></span>
+        </div>
+        <div id="lesson-content" class="content"></div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="lesson-nav">
+        <button id="prev-btn" class="nav-btn prev-btn">← Previous</button>
+        <div class="progress-indicator">
+          <span id="progress-text">Loading...</span>
+        </div>
+        <button id="next-btn" class="nav-btn next-btn">Next →</button>
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="lesson-toc">
+        <h3>On This Page</h3>
+        <div id="page-toc"></div>
+      </div>
+    </article>
   </main>
-</div>
 
-<script>
-// Dark Mode (same as above)
-const btn = document.getElementById("theme-toggle");
-const apply = () => {
-  const dark = localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
-  document.body.classList.toggle("dark", dark);
-  btn.textContent = dark ? "Light Mode" : "Dark Mode";
-};
-apply();
-btn.addEventListener("click", () => { document.body.classList.toggle("dark"); localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light"); apply(); });
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">whynotyou?</div>
+      <p>Free tech & science education for everyone.</p>
+      <p class="copy">© 2025 whynotyou? All rights reserved.</p>
+    </div>
+  </footer>
 
-// Load Lesson (use relative api path)
-const urlParams = new URLSearchParams(location.search);
-const courseId = urlParams.get("course");
-const lessonNum = parseInt(urlParams.get("lesson")) || 1;
-
-fetch("api/courses.json")
-  .then(r => {
-    if (!r.ok) throw new Error("Network response was not ok");
-    return r.json();
-  })
-  .then(data => {
-    const course = data.find(c => String(c.id) === String(courseId));
-    if (!course) throw new Error("Course not found");
-    const lesson = course.lessons.find(l => Number(l.id) === Number(lessonNum));
-    if (!lesson) throw new Error("Lesson not found");
-
-    document.getElementById("course-title").textContent = course.title;
-    document.getElementById("lesson-title").textContent = lesson.title;
-    document.getElementById("lesson-body").innerHTML = lesson.content;
-
-    const list = document.getElementById("lesson-list");
-    course.lessons.forEach(l => {
-      const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = `lesson.html?course=${encodeURIComponent(courseId)}&lesson=${encodeURIComponent(l.id)}`;
-      a.textContent = `${l.id}. ${l.title}`;
-      if (Number(l.id) === Number(lessonNum)) a.style.color = "var(--accent)";
-      li.appendChild(a);
-      list.appendChild(li);
-    });
-  })
-  .catch(err => {
-    console.error(err);
-    document.getElementById("lesson-title").textContent = "Not found";
-    document.getElementById("lesson-body").textContent = err.message;
-  });
-</script>
+  <script src="js/main.js"></script>
+  <script src="js/lesson.js"></script>
 </body>
 </html>

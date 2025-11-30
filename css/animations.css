@@ -60,12 +60,37 @@
 :root {
   --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
+/* Emoji Animations */
+@keyframes emoji-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes emoji-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes emoji-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.emoji-sun {
+  display: inline-block;
+  animation: emoji-spin 2s linear infinite;
+}
+
+.emoji-moon {
+  display: inline-block;
+  animation: emoji-float 3s ease-in-out infinite;
+}
+
+.emoji-star {
+  display: inline-block;
+  animation: emoji-pulse 2s ease-in-out infinite;
 }
 
 /* Hero fade-in on load */
@@ -84,7 +109,7 @@ html {
   animation: hero-fade 1.2s var(--ease-luxury) forwards;
 }
 
-/* Hero title elegant reveal */
+/* Title reveal */
 @keyframes title-reveal {
   from {
     opacity: 0;
@@ -118,7 +143,7 @@ html {
   opacity: 0;
 }
 
-/* CTA buttons entrance */
+/* CTA entrance */
 @keyframes cta-entrance {
   from {
     opacity: 0;
@@ -159,44 +184,6 @@ html {
 .course-card:nth-child(5) { animation-delay: 0.7s; }
 .course-card:nth-child(6) { animation-delay: 0.85s; }
 
-/* Luxury card hover */
-.course-card, .blog-card {
-  transition: all 0.8s var(--ease-smooth);
-  will-change: transform, box-shadow;
-}
-
-.course-card:hover, .blog-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
-}
-
-/* Smooth button hover */
-.btn {
-  transition: all 0.6s var(--ease-luxury);
-  position: relative;
-  overflow: hidden;
-}
-
-.btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  transition: left 0.6s var(--ease-luxury);
-}
-
-.btn:hover::before {
-  left: 100%;
-}
-
 /* Section titles fade in */
 @keyframes section-title {
   from {
@@ -213,19 +200,7 @@ html {
   animation: section-title 0.8s var(--ease-luxury) forwards;
 }
 
-/* Glass card subtle animation */
-.card.glass {
-  animation: card-entrance 1s var(--ease-luxury) forwards;
-  backdrop-filter: blur(10px);
-  transition: all 0.8s var(--ease-smooth);
-}
-
-.card.glass:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-}
-
-/* Progress bar smooth animation */
+/* Progress bar animation */
 @keyframes progress-fill {
   from {
     width: 0;
@@ -236,7 +211,7 @@ html {
 }
 
 .progress span {
-  animation: progress-fill 1.5s var(--ease-out) 0.8s forwards;
+  animation: progress-fill 1.5s var(--ease-luxury) 0.8s forwards;
   display: block;
   height: 4px;
   background: var(--accent);
@@ -247,6 +222,20 @@ html {
 /* Fade in class */
 .fade-in {
   animation: hero-fade 0.9s var(--ease-luxury) forwards;
+}
+
+/* Hover glow effect */
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .hover-glow:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Reduce motion for accessibility */
